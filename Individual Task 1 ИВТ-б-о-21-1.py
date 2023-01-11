@@ -3,9 +3,9 @@
 
 
 """
-Написать программу, которая считывает английский текст из файла и
-выводит на экранслова текста, начинающиеся и оканчивающиеся
-на гласные буквы.
+Написать программу, которая считывает текст из файла и выводит его на экран,
+заменив цифры от 0 до 9 на слова «ноль», «один», ..., «девять», начиная
+каждое предложение с новой строки.
 """
 
 
@@ -14,6 +14,10 @@ if __name__ == "__main__":
         numbers = ['ноль', 'один', 'два', 'три', 'четыре', 'пять',
                    'шесть', 'семь', 'восемь', 'девять']
         string = file.read()
-        for number in range(len(numbers)):
-            string = string.replace(str(number), numbers[number]).replace(". ", ".\n")
-        print(string)
+    string = string.replace('. ', '.\n')
+    end = ''
+    for number in string:
+        if number.isnumeric():
+            number = numbers[int(number)]
+        end += number
+    print(end)
